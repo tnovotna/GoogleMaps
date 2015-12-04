@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style type="text/css">
+      html, body { height: 100%; margin: 0; padding: 0; }
+      #map { width: 1000px; height: 700px; margin: 0 auto; border-radius: 50%; border:  solid 10px rgb(176,255,241);}
+    </style>
+       <link rel="stylesheet" type="text/css" href="stylesheet.css">
+      <link href='https://fonts.googleapis.com/css?family=Lora:400,700' rel='stylesheet' type='text/css'>
+      <link href='https://fonts.googleapis.com/css?family=Sigmar+One|Abril+Fatface' rel='stylesheet' type='text/css'>
+  </head>
+  <body>
+      <div id="wrapper">
+          <h1><div id="image"> <img src="castle4.png"></div>Castles of<br>  the Czech Republic  </h1>
+         
+        
+      <div id="map"></div>
+
+      
+          <script type="text/javascript">
+
+        
+
+var map;
+              function initMap() {
+    
+    var prague = { lat: 50.090216, lng: 14.399579 };
+    
+    var ceskykrumlov = { lat: 48.812735, lng: 14.317466 };
+    
+        var lednice = { lat: 48.799918, lng: 16.803398 };
+    
+           var hrnm = { lat: 49.871007, lng: 17.875824 }; 
+              
+              
+              
+//       image = 'castle.png';
+//  var marker = new google.maps.Marker({
+//    map: map,
+//    icon: image    
+                  
+                  
+  
+
+    
+    
+    
+  map = new google.maps.Map(document.getElementById('map'), {
+    center: {lat: 49.993615, lng: 15.820313},
+    zoom: 7,
+    mapTypeId: google.maps.MapTypeId.TERRAIN,
+    disableDefaultUI: true,
+             
+      
+
+                  styles: [
+                      {"stylers":[{"hue":"#16a085"},{"saturation":0}]},{"featureType":"road","elementType":"geometry","stylers":[{"lightness":100},{"visibility":"simplified"}]},{"featureType":"road","elementType":"labels","stylers":[{"visibility":"off"}]}]
+               // };
+
+      
+      
+      
+  });
+
+
+              
+             var contentString1 = '<div id="content">'+ '<img src="prague.png" style="float: left; max-width: 320px; margin-right: 15px; margin-left: 0;">'+'<h2><a href="https://www.czechtourism.com/a/prague/" target="_blank">Prague Castle</a></h2>' + '<p>Prague Castle is the largest coherent castle complex in the world, with an area of almost 70,000 square metres. It consists of a large-scale composition of palaces and ecclesiastical buildings of various architectural styles, from Roman-style buildings from the 10th century through Gothic modifications in the 14th century. Since the Velvet Revolution, the Prague Castle has undergone significant and ongoing repairs and reconstructions.</p>'
++
+      '</div>'; 
+                  
+                   var contentString2 = '<div id="content">'+ '<img src="lednice.png" style="float: right; max-width: 320px;">'+'<h2><a href="https://www.czechtourism.com/c/lednice-valtice-area-unesco/" target="_blank">Lednice</a></h2>' + '<p>There are not many places in the world which have received such care as the elegant area around the spectacular Lednice and Valtice chateaux. An absolutely unique park has been created here over the centuries, full of rare tree species, romantic little buildings, fishponds and beautiful little corners. The Lednice-Valtice Complex, which has been included in the UNESCO list, is known as the Garden of Europe to this very day.</p>'
+              
++
+      '</div>'; 
+                
+                   var contentString3 = '<div id="content">'+ '<img src="ceskykrumlov.png" style="float: right; max-width: 320px;">'+'<h2><a href="https://www.czechtourism.com/c/cesky-krumlov-castle-unesco/" target="_blank">Cesky Krumlov</a></h2>' + '<p>When you arrive in Cesky Krumlov, you will be captivated at first glance by the monumental panorama of the chateau here, which rises above the picturesque Renaissance architecture of the adjacent little town. Taking a walk through the historical centre will, thanks to its inimitable medieval character, leave you in no doubt as to why Cesky Krumlov is one of the gems included on the UNESCO list.</p>'
++
+      '</div>'; 
+                  
+                   var contentString4 = '<div id="content">'+ '<img src="hradecnm.png" style="float: right; max-width: 320px;">'+'<h2><a href="https://www.czechtourism.com/c/hradec-nad-moravici-chateau/" target="_blank">Hradec nad Moravici</a></h2>' + '<p>Not far from Opava is the charming little town of Hradec nad Moravici, which is dominated by a chateau of the same name composed of two sections. Do not overlook the 19th-century White Tower, and in the summer months you can go for a romantic stroll through the English park. Should you wish to uncover the mystery of other nearby sites you can visit the Radun Chateau, which has an orangery in the Neoclassical style and an ornamental garden and park.</p>'
++
+      '</div>'; 
+                  
+                  
+                  var infowindow1 = new google.maps.InfoWindow({
+     content: contentString1    
+    });
+    
+    var infowindow2 = new google.maps.InfoWindow({
+     content: contentString2    
+    });
+      var infowindow3 = new google.maps.InfoWindow({
+     content: contentString3    
+    });
+                  
+     var infowindow4 = new google.maps.InfoWindow({
+     content: contentString4    
+    });
+    
+    var marker1 = new google.maps.Marker({
+      position: prague,
+       map: map,
+//        icon: 'castle.png',
+       title: 'Prague Castle'
+        });
+    
+        var marker2 = new google.maps.Marker({
+      position: lednice,
+       map: map,
+       title: 'Lednice'
+            });
+    
+     var marker3 = new google.maps.Marker({
+      position: ceskykrumlov,
+       map: map,
+         title: 'Cesky Krumlov'
+          });
+    
+     var marker4 = new google.maps.Marker({
+      position: hrnm,
+       map: map,
+       title: 'Hradec nad Moravici'
+          });
+                  
+                  
+                  marker1.addListener('click', function() {
+         infowindow2.close();
+         infowindow3.close();
+          infowindow4.close();
+    infowindow1.open(map, marker1);
+  });
+       marker2.addListener('click', function() {
+           infowindow1.close();
+          infowindow3.close();
+          infowindow4.close();
+    infowindow2.open(map, marker2);
+  });
+    
+     marker3.addListener('click', function() {
+           infowindow1.close();
+          infowindow2.close();
+          infowindow4.close();
+    infowindow3.open(map, marker3);
+  });
+                  
+                   marker4.addListener('click', function() {
+           infowindow1.close();
+          infowindow2.close();
+          infowindow3.close();
+    infowindow4.open(map, marker4);
+  });
+}
+    
+    </script>
+    <script async defer
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB8Pp92l0oFfaiGkURjDp_AWCN3tFpawak&callback=initMap">
+    </script>
+  </body>
+</html>
+    
+    
+    
+<!--    https://snazzymaps.com/style/8/turquoise-water-->
